@@ -21,6 +21,7 @@ a.style.borderBottom="solid 3px black";//camelcase
  list[1].style.fontWeight='bold';
  list[2].style.fontWeight='bold';
 
+list[2].style.backgroundColor='greenyellow';
 // list[1].style.color='green';
 // list.style.color='green';
 // list[1].style.backgroundColor='yellow';
