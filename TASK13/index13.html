@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head class="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>FORM</h1>
+</head>
+<body>
+    <form  class="form">
+        <label for="fname" class="abc">Name:</label>     
+        <input type="text" id="name" class="m"  placeholder="Enter Name" value="abc">
+        
+        <label for="femail"class="a">Email:</label>
+        <input type="email" id="email" class="m"placeholder="Enter Email">
+
+        <input type="button"   value="Submit" class="btn" style="background-color: orange">
+    </form>
+                   <!-- UL -->
+<ul id="items" class="list-group">
+</ul>
+
+    <script>   
+const btn=document.querySelector('.btn');
+//Click
+    btn.addEventListener('click',onSubmit);
+    // After clicking on btn delete before localstorage 
+     function onSubmit(e){
+        let del=localStorage.getItem('key');
+    //     localStorage.removeItem(del);
+    // localStorage.removeItem('detail');
+
+    let name=document.querySelector('#name').value;
+     let email=document.querySelector('#email').value;
+      // console.log(name.value);
+      if(name==='' || email===''){
+        alert('Please Enter Details');
+      }
+      else{
+      // Local storage
+      let detail={
+        name:name,
+        email:email
+      };
+      let ans=JSON.stringify(detail);//convert
+      
+      localStorage.setItem('key',ans);
+      // console.log(localStorage.getItem('key'));
+
+// Printing on screen   inserting li to ul
+       let localstoragea=localStorage.getItem('key');
+      let ul= document.getElementById('items');   //id of ul
+    let li=document.createElement('li');
+    li.appendChild(document.createTextNode(localstoragea));//created list in ul
+    ul.appendChild(li);
+
+    // Appending button in li
+  let input2=document.createElement('input');
+input2.type='button';
+input2.value="Delete";
+input2.setAttribute('onclick', 'Delete()');
+// input2.appendChild(document.createTextNode("DELETE"));
+li.appendChild(input2);
+// console.log(input2);
+
+  // Appending Editbtn to li
+  let edit=document.createElement('input');
+  edit.value=" EDIT";
+  edit.type="button";
+  edit.setAttribute('onclick','EDIT()');
+  li.appendChild(edit);
+      }
+
+     }
+     function Delete(){
+      let li2=document.querySelector('li');
+  localStorage.removeItem('key');
+  li2.parentNode.removeChild(li2);//REMOVING
+  // ul.parentNode.removeChild('li');
+}
+
+
+    </script>
+</body>
+</html>
